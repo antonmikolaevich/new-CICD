@@ -1,10 +1,13 @@
 {
   "name": "js_automated_testing_intro",
   "version": "1.0.0",
-  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "description": "js automated testing introduction",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "coverage": "c8 npm test",
+    "lint": "eslint ./ --fix",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -14,6 +17,15 @@
   "author": "Iryna_Sikirytskaya@epam.com",
   "license": "ISC",
   "dependencies": {
+    "c8": "^7.12.0",
+    "chai": "^4.3.7",
+    "husky": "^8.0.3",
+    "mocha": "^10.2.0",
+    "mochawesome": "^7.1.3",
     "package": "^1.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.32.0",
+    "eslint-config-google": "^0.14.0"
   }
 }
