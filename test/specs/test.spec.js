@@ -101,6 +101,78 @@ describe("Test suite", () => {
       const foundPatient = await $("//span[@class='patient-name']").getText();
       expect(foundPatient).toEqual("Mercy");
    });
+
+   it("execute() scenario", async () =>{
+      const patient = await $("//td[text()='Adams']");
+      await browser.execute(function(patient) {
+      patient.style.border = 'green dashed 3px'}, patient);
+      await browser.pause(3000);
+   });
+ 
+   it("waitUntil() scenario", async () =>{
+      await browser.click($("a[href='#/doctor-details/1']"));
+      await browser.waitUntil(
+      async() => await $("//div[@class='name']").getText() === "Dr. Nembo Lukeni",
+      {timeout: 5000, timeoutMsg: "not loaded"}
+      );
+   });
+
+   it("browser actions: drag and drop", async () =>{
+      await browser.click($("//span[text()='Schedule']"));
+      const elem = await $("//div[@data-id='Appointment_1013']");
+      const target = await $("//td[@data-date='1596355200000']");
+      await elem.dragAndDrop(target)
+   });
+
+   it("browser actions: moveTo", async () =>{
+      await browser.click($("div.patients"));
+      const row = await $("div.e-content tbody tr:first-child")
+      await row.moveTo();
+      await browser.pause(5000);
+   });
+
+   it("cookies", async () =>{
+      await browser.pause(3000);
+      await browser.setCookies({
+         name: "customCookies",
+         value: "one"
+      });
+      await browser.pause(10000);
+      const cookie = await browser.getCookies(["customCookies"]);
+      console.log(cookie);
+      await browser.deleteCookies(["customCookies"]);
+      await browser.pause(10000);
+   });
+
+   it("local storage", async () =>{
+      const key = "localStorageKey";
+      const value = "localStorageValue";
+      await browser.execute(function (key, value) {
+      window.localStorage.setItem(key, value);
+      window.localStorage.setItem(key, value);
+      }, key, value);
+      await browser.pause(10000);
+      const readValue = await browser.execute(function (key) {
+      return window.localStorage.getItem(key);
+      }, key);
+      console.log(readValue);
+   })
+
+   it("session storage", async () =>{
+      const key = "sessionStorageKey";
+      const value = "sessionStorageValue";
+      await browser.execute(function (key, value) {
+      window.sessionStorage.setItem(key, value);
+      window.sessionStorage.setItem(key, value);
+      }, key, value);
+      await browser.pause(10000);
+      const readValue = await browser.execute(function (key) {
+      return window.sessionStorage.getItem(key);
+      }, key);
+      console.log(readValue);
+   })
 });
+
+
 
 
