@@ -2,3 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npm run lint
+npx validate-branch-name
+npx lint-staged

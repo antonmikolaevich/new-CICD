@@ -1,5 +1,4 @@
 const {existsSync, mkdirSync} = require("fs");
-//const allure = require('allure-commandline');
 exports.config = {
     //
     // ====================
@@ -66,7 +65,20 @@ exports.config = {
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+    }, {
+    
+      // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+      // grid with only 5 firefox instances available you can make sure that not more than
+      // 5 instances get started at a time.
+      maxInstances: 1,
+      //
+      browserName: 'firefox',
+      acceptInsecureCerts: true
+      // If outputDir is provided WebdriverIO can capture driver session logs
+      // it is possible to configure which logTypes to include/exclude.
+      // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+      // excludeDriverLogs: ['bugreport', 'server'],
+  }],
     //
     // ===================
     // Test Configurations
@@ -137,11 +149,11 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec', ['junit', {
-        outputDir: "./report",
-        outputFileFormat: function (options) {
-            return `results-${options.cid}.xml`
-        }
-    }], ['allure', {
+      outputDir: "./report",
+      outputFileFormat: function (options) {
+          return `results-${options.cid}.xml`
+      }
+  }], ['allure', {
         outputDir: 'allure-results',
         disableWebdriverStepsReporting: true,
         disableWebdriverScreenshotsReporting: true,
@@ -206,7 +218,7 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {Object}         browser      instance of created browser/device session
      */
-    before: function (capabilities, specs) {
+    before: function () {
         browser.addCommand('click', async function(locator) {
             await locator.waitForDisplayed({timeout:5000})
             await locator.click()
@@ -252,7 +264,7 @@ exports.config = {
      * @param {Boolean} result.passed    true if test has passed, otherwise false
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    afterTest: async (test, context, {error, result, duration, passed, retries}) => {
+    afterTest: async (test, context, error) => {
         if (error) {   
             const filename = test.title + '.png';     
             const dirPath = './screenshots/';     
