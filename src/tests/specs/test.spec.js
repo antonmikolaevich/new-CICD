@@ -71,15 +71,15 @@ describe("Test suite", () => {
 
      it("Delete a patient", async () =>{
       await pages('dashboard').sideMenu.item('patients').click();
+      const patientName = await pages('patients').patientCard(1).name.getText();
       await pages('patients').patientCard(1).name.click();
       await pages('patients').patientDetails.rootEl.waitForDisplayed();
       await pages('patients').patientDetails.deleteBtn.click();
       await pages('patients').patientDelete.rootEl.waitForDisplayed();
       await pages('patients').patientDelete.okBtn.click();
 
-      await expect(pages('patients').patientCard(1).name).toHaveText('Adams');
-      // const cancelation = await $("//span[text()='Milka']").waitForDisplayed({reverse: true});
-      // expect(cancelation).toEqual(true);
+      cancelation = await pages('patients').patientCard(1).name.getText();
+      expect(cancelation).not.toEqual(patientName);
    });
 
      it("Cancel Appointment", async () =>{
@@ -91,7 +91,6 @@ describe("Test suite", () => {
         await pages('schedule').appointmentDelete.rootEl.waitForDisplayed({ timeout: 3000 });
         await pages('schedule').appointmentDelete.deleteBtn.click();
 
-      //   await expect(pages('schedule').scheduleComponent.appointment.waitForExist({reverse: true})).toEqual(true);
         const cancelation = await pages('schedule').scheduleComponent.appointment.waitForExist({reverse: true})
         expect(cancelation).toEqual(true);
      });
@@ -114,17 +113,14 @@ describe("Test suite", () => {
 
    it("execute() scenario", async () =>{
       await pages('dashboard').todayAppointment.rootEl.waitForDisplayed();
-      const doctor = await pages('dashboard').todayAppointment.doctor('doctor2');
+      const doctor = await pages('dashboard').todayAppointment.doctor('doctor2', 3);
       await browser.execute(function(doctor) {
       doctor.style.border = 'green dashed 3px'}, doctor);
-      // const patient = await $("//td[text()='Adams']");
-      // await browser.execute(function(patient) {
-      // patient.style.border = 'green dashed 3px'}, patient);
       await browser.pause(3000);
    });
  
    it("waitUntil() scenario", async () =>{
-      await pages('dashboard').todayAppointment.doctor('doctor1').click();
+      await pages('dashboard').todayAppointment.doctor('doctor1', 1).click();
       await browser.waitUntil(
       async() => await pages('doctors').doctorDetails.name.getText() === "Dr. Nembo Lukeni",
       {timeout: 5000, timeoutMsg: "not loaded"}

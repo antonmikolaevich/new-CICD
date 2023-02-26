@@ -12,9 +12,9 @@ class DoctorEdit extends BaseComponent{
         return this.rootEl.$('button.e-primary');
     }
 
-    // get cancelBtn() {
-    //     return this.rootEl.$('button.delete-patient');
-    // }
+    get cancelBtn() {
+        return this.rootEl.$('.button-container button.e-btn:not(.e-primary)');
+    }
 }
 
 module.exports = DoctorEdit;
