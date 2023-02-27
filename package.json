@@ -9,8 +9,7 @@
     "lint": "eslint ./ --fix",
     "prepare": "husky install",
     "wdio": "wdio run src/config/wdio.conf.js",
-    "bdd": "wdio run ./bdd/config/wdio.conf.js",
-    "bdd1": "wdio run src/config/bdd.conf.js"
+    "bdd": "wdio run src/config/bdd.conf.js"
   },
   "repository": {
     "type": "git",

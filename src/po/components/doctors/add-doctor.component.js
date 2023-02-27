@@ -13,6 +13,17 @@ class AddDoctorComponent extends BaseComponent{
         return this.rootEl.$('.e-btn-icon');
     }
 
+    /**
+     * 
+     * @param button {'save' | 'close'}
+     */
+    async clickButton(button) {
+        if (button.toLowerCase() === 'save') {
+            await this.saveBtn.click();
+        } else {
+            await this.closeBtn.click();
+        }
+    }
 
     input (name) {
         const selectors = {
