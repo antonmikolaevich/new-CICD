@@ -20,3 +20,27 @@ When('I click {string} button in modal window', function(button) {
 When('I input {string} value in {string} field', function(value, field) {
     return pages('doctors').addDoctorComponent.input(field).addValue(value);
 });
+
+When('I click on {int} specialist card', function(number) {
+    return pages('doctors').specialistCard(number).rootEl.click();
+});
+
+When('I click {string} button on doctor details page', function(button) {
+    return pages('doctors').doctorDetails.clickButton(button);
+});
+
+When('I change doctor designation to {string}', function(newValue) {
+     return pages('doctors').doctorEdit.designation.setValue(newValue);
+});
+
+When('I click on {int} patient card', function(number) {
+    return pages('patients').patientCard(number).name.click();
+});
+
+When('I click {string} button on patient details page', function(button) {
+    return pages('patients').patientDetails.clickButton(button);
+});
+
+When('I click {string} button on patient delete page', function(button) {
+    return pages('patients').patientDelete.clickButton(button);
+});

@@ -5,6 +5,18 @@ class PatientDetails extends BaseComponent{
         super('.e-edit-dialog')
     }
 
+    /**
+     * 
+     * @param button {'edit' | 'delete'}
+     */
+    async clickButton(button) {
+        if (button.toLowerCase() === 'edit') {
+            await this.editBtn.click();
+        } else {
+            await this.deleteBtn.click();
+        }
+    }
+
     get editBtn() {
         return this.rootEl.$('button.edit-patient');
     }
