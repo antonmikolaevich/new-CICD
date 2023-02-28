@@ -13,7 +13,7 @@ Scenario: It should be possible to open a modal window
 
 
 @3
-Scenario: It shouldn't be possible to add a doctor without "<field1>" field
+Scenario Outline: It shouldn't be possible to add a doctor without "<field1>" field
     When I open "Dashboard" page
     And I click "Doctors" link from the side menu
     And I click add new doctor button from list header

@@ -9,7 +9,8 @@
     "lint": "eslint ./ --fix",
     "prepare": "husky install",
     "wdio": "wdio run src/config/wdio.conf.js",
-    "bdd": "wdio run src/config/bdd.conf.js"
+    "bdd": "wdio run src/config/bdd.conf.js",
+    "bddPatients": "wdio run src/config/bdd.conf.js --cucumberOpts.tagExpression='@patients'"
   },
   "repository": {
     "type": "git",
