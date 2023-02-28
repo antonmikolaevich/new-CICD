@@ -5,6 +5,14 @@ class PatientDelete extends BaseComponent{
         super('.break-hour-dialog')
     }
 
+    async clickButton(button) {
+        if (button.toLowerCase() === 'ok') {
+            await this.okBtn.click();
+        } else {
+            await this.cancelBtn.click();
+        }
+    }
+
     get okBtn() {
         return this.rootEl.$('button.e-primary');
     }

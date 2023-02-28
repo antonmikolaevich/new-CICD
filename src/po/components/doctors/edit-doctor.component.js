@@ -8,6 +8,18 @@ class DoctorEdit extends BaseComponent{
         return this.rootEl.$('[name="Designation"]');
     }
 
+    /**
+     * 
+     * @param button {'save' | 'cancel'}
+     */
+    async clickButton(button) {
+        if (button.toLowerCase() === 'save') {
+            await this.saveBtn.click();
+        } else {
+            await this.cancelBtn.click();
+        }
+    }
+
     get saveBtn() {
         return this.rootEl.$('button.e-primary');
     }

@@ -13,6 +13,18 @@ class DoctorDetails extends BaseComponent{
         return this.rootEl.$('.designation');
     }
 
+    /**
+     * 
+     * @param button {'edit' | 'delete'}
+     */
+    async clickButton(button) {
+        if (button.toLowerCase() === 'edit') {
+            await this.editBtn.click();
+        } else {
+            await this.deleteBtn.click();
+        }
+    }
+
     get editBtn() {
         return this.rootEl.$('button.edit-details');
     }
