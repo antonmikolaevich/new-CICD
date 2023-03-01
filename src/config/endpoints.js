@@ -1,4 +1,4 @@
-const testUrl = "https://jsonplaceholder.typicode.com"
+const testUrl = "https://petstore.swagger.io/v2"
 
 module.exports ={
     testUrl
