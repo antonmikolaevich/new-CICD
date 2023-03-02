@@ -1,0 +1,12 @@
+{
+    "id": 55,
+    "category": {
+      "id": 55,
+      "name": "cat"
+    },
+    "name": "Jim",
+    "photoUrls": [
+      "url1"
+    ],
+    "status": "unavailable"
+  }

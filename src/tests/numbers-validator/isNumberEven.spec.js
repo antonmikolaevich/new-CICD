@@ -1,8 +1,9 @@
 // import {NumbersValidator} from '../../app/numbers_validator.js';
+var tags = require('mocha-tags');
 const NumbersValidator = require('../../app/numbers_validator.js')
 // import {expect, assert} from 'chai';
 const {expect, assert} = require('chai')
-describe ('isNumberEven tests', () => {
+tags('unitTests').describe ('isNumberEven tests', () => {
     let validator;
     beforeEach(() => {
         validator = new NumbersValidator();
@@ -36,7 +37,7 @@ describe ('isNumberEven tests', () => {
 
 });
 
-describe ('getEvenNumbersFromArray tests', () => {
+tags('unitTests').describe ('getEvenNumbersFromArray tests', () => {
     let validator;
     beforeEach(() => {
         validator = new NumbersValidator();
@@ -72,7 +73,7 @@ describe ('getEvenNumbersFromArray tests', () => {
     })
 });
 
-    describe ('isAllNumbers tests', () => {
+tags('unitTests').describe ('isAllNumbers tests', () => {
         let validator;
         beforeEach(() => {
             validator = new NumbersValidator();
@@ -116,7 +117,7 @@ describe ('getEvenNumbersFromArray tests', () => {
 
 });
 
-describe ('isInteger tests', () => {
+tags('unitTests').describe ('isInteger tests', () => {
     let validator;
     beforeEach(() => {
         validator = new NumbersValidator();
