@@ -4,14 +4,14 @@
   "description": "js automated testing introduction",
   "main": "index.js",
   "scripts": {
-    "test": "mocha src/tests/numbers-validator/isNumberEven.spec.js",
+    "unitTests": "mocha --tags 'is:unitTests not:api'",
     "coverage": "c8 npm test",
     "lint": "eslint ./ --fix",
     "prepare": "husky install",
     "wdio": "wdio run src/config/wdio.conf.js",
     "bdd": "wdio run src/config/bdd.conf.js",
-    "bddPatients": "wdio run src/config/bdd.conf.js --cucumberOpts.tagExpression='@patients'", 
-    "api": "mocha src/tests/specs/api.spec.js"
+    "bddPatients": "wdio run src/config/bdd.conf.js --cucumberOpts.tagExpression='@patients'",
+    "api": "mocha --tags 'is:api not:unitTests'"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "chai": "^4.3.7",
     "husky": "^8.0.3",
     "mocha": "^10.2.0",
+    "mocha-tags": "^1.0.1",
     "mochawesome": "^7.1.3",
     "package": "^1.0.1"
   },

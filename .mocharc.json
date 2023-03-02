@@ -1,4 +1,0 @@
-{
-    "spec": "./src/tests/numbers-validator/isNumberEven.spec.js",
-    "reporter": "mochawesome"
-}

@@ -1,7 +1,8 @@
+var tags = require('mocha-tags');
 const {sendRequest} = require("../../helpers/api.helper");
 const testData = require("../../config/data.json");
 const updatedData = require("../../config/updatedData.json");
-describe("API Test Suite", () => {
+tags('api').describe("API Test Suite", () => {
     
      it("POST resource", async() => {
         const response = await sendRequest("pet", testData, "post")
