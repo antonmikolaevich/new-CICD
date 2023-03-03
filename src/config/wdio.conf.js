@@ -1,5 +1,5 @@
 const {existsSync, mkdirSync} = require("fs");
-const log4j = require('log4j');
+const log4j = require('log4js');
 exports.config = {
     //
     // ====================
