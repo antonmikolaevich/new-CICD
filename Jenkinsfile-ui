@@ -19,7 +19,7 @@ pipeline {
             bat 'npm run report'
             junit allowEmptyResults: true, testResults: 'report/*.xml'
             //archiveArtifacts artifacts: 'reports/html-reports/master-report.html'
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'reports/html-reports', reportFiles: 'master-report.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: './reports/html-reports/', reportFiles: '*.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
         }
     }
 }
