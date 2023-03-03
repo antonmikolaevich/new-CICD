@@ -1,4 +1,5 @@
 const {existsSync, mkdirSync} = require("fs");
+const log4j = require('log4j');
 exports.config = {
     //
     // ====================
@@ -152,7 +153,7 @@ exports.config = {
     useOnAfterCommandForScreenshot: false,
 
     //to initialize the logger
-   // LOG: log4j.getLogger("default")
+   LOG: log4j.getLogger("default")
 }
 ]],
     
