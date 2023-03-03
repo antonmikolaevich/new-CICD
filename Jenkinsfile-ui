@@ -11,15 +11,14 @@ pipeline {
         stage('UI') {
             steps {
                 bat 'npm run wdio'
-                bat 'allure generate'
+                bat 'npm run report'
             }
         }
     }
     post {
         always {
-            junit allowEmptyResults: true, testResults: 'reports/*.xml'
-            archiveArtifacts artifacts: 'allure-report/index.html'
-           // allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+            junit allowEmptyResults: true, testResults: 'report/*.xml'
+            archiveArtifacts artifacts: './reports/html-reports/*.html'
         }
     }
 }

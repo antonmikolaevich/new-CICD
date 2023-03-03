@@ -11,7 +11,8 @@
     "wdio": "wdio run src/config/wdio.conf.js",
     "bdd": "wdio run src/config/bdd.conf.js",
     "bddPatients": "wdio run src/config/bdd.conf.js --cucumberOpts.tagExpression='@patients'",
-    "api": "mocha --tags 'is:api not:unitTests'"
+    "api": "mocha --tags 'is:api not:unitTests'",
+    "report": "node node_modules/wdio-html-nice-reporter/lib/makeReport.js master-report.html 'reports/html-reports/'"
   },
   "repository": {
     "type": "git",
