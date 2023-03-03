@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                bat 'npm install'
+            }
+        }
+
+        stage('API') {
+            steps {
+                bat 'npm run unitTests'
+            }
+        }
+    }
+    post {
+        always {
+            junit allowEmptyResults: true, testResults: 'report/*.xml'
+            archiveArtifacts 'mochawesome-report/mochawesome.html'
+        }
+    }
+}
