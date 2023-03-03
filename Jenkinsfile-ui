@@ -13,14 +13,10 @@ pipeline {
                 bat 'npm run wdio'
             }
         }
-        stage('Report') {
-            steps {
-                bat 'npm run report'
-            }
-        }
     }
     post {
         always {
+            bat 'npm run report'
             junit allowEmptyResults: true, testResults: 'report/*.xml'
             archiveArtifacts artifacts: './reports/html-reports/*.html'
         }
