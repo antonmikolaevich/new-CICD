@@ -136,7 +136,7 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec', ['junit', {
-      outputDir: "./report",
+      outputDir: "./reports",
       outputFileFormat: function (options) {
           return `results-${options.cid}.xml`
       }
