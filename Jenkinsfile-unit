@@ -17,7 +17,7 @@ pipeline {
     post {
         always {
             junit allowEmptyResults: true, testResults: 'report/*.xml'
-            archiveArtifacts 'mochawesome-report/mochawesome.html'
+            archiveArtifacts artifacts: 'mochawesome-report/mochawesome.html'
         }
     }
 }
