@@ -10,7 +10,7 @@ pipeline {
 
         stage('UI') {
             steps {
-                bat 'npm run bdd'
+                bat 'npm run wdio'
             }
         }
     }
