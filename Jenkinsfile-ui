@@ -18,7 +18,7 @@ pipeline {
         always {
             bat 'npm run report'
             junit allowEmptyResults: true, testResults: 'report/*.xml'
-            archiveArtifacts artifacts: './reports/html-reports/*.html'
+            archiveArtifacts artifacts: 'reports/html-reports/master-report.html'
         }
     }
 }
