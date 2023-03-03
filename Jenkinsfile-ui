@@ -11,6 +11,10 @@ pipeline {
         stage('UI') {
             steps {
                 bat 'npm run wdio'
+            }
+        }
+        stage('Report') {
+            steps {
                 bat 'npm run report'
             }
         }
