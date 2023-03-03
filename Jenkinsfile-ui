@@ -19,6 +19,7 @@ pipeline {
         always {
             junit allowEmptyResults: true, testResults: 'reports/*.xml'
             archiveArtifacts artifacts: 'allure-report/*.html'
+            allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
         }
     }
 }
