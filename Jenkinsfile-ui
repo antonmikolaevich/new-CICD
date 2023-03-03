@@ -8,7 +8,7 @@ pipeline {
             }
         }
 
-        stage('API') {
+        stage('UI') {
             steps {
                 bat 'npm run bdd'
             }

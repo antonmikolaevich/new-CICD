@@ -8,7 +8,7 @@ pipeline {
             }
         }
 
-        stage('API') {
+        stage('Unit') {
             steps {
                 bat 'npm run unitTests'
             }
