@@ -17,7 +17,7 @@ pipeline {
     }
     post {
         always {
-            junit allowEmptyResults: true, testResults: 'report/*.xml'
+            junit allowEmptyResults: true, testResults: 'reports/*.xml'
             archiveArtifacts artifacts: 'allure-report/*.html'
         }
     }
