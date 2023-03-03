@@ -1,7 +1,5 @@
 node_modules
 coverage
-mochawesome-report
 allure-report
 allure-results
-report
 screenshots
