@@ -4,7 +4,7 @@
   "description": "js automated testing introduction",
   "main": "index.js",
   "scripts": {
-    "unitTests": "mocha --tags 'is:unitTests not:api'",
+    "unitTests": "mocha --tags 'is:unitTests not:api' --reporter mochawesome",
     "coverage": "c8 npm test",
     "lint": "eslint ./ --fix",
     "prepare": "husky install",
